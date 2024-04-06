@@ -1,4 +1,3 @@
-
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -12,7 +11,7 @@ public class Counter : MonoBehaviour
 
     private Coroutine _coroutine;
 
-    void Start()
+    private void Start()
     {
         _valueText.text = _value.ToString();
     }
@@ -23,21 +22,17 @@ public class Counter : MonoBehaviour
         {
             if (_coroutine == null)
             {
-                _coroutine = StartCoroutine(BeginIncrease());
-
-                Debug.Log("Start");
+                _coroutine = StartCoroutine(Increasing());
             }
             else
             {
                 StopCoroutine(_coroutine);
                 _coroutine = null;
-
-                Debug.Log("Stop!!!");
             }
         }
     }
 
-    private IEnumerator BeginIncrease()
+    private IEnumerator Increasing()
     {
         WaitForSeconds waitForSeconds = new WaitForSeconds(_seconds);
 
